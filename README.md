@@ -47,6 +47,25 @@ npm run build
 npm run preview
 ```
 
+### Deploy to Cloudflare Workers
+
+The app is deployed as a Cloudflare Worker with static assets. The Worker configuration lives in `wrangler.jsonc`, and the entry point is `worker/index.ts`.
+
+```bash
+npm run deploy
+```
+
+This builds the app and deploys it to `https://spy-circle.<your-subdomain>.workers.dev`. To preview the Worker locally:
+
+```bash
+npm run worker:dev
+```
+
+GitHub Actions deploys automatically on pushes to `master` or `main` using `.github/workflows/deploy.yml`. Add these repository secrets before the first run:
+
+- `CLOUDFLARE_API_TOKEN` — API token with Workers Scripts edit permission
+- `CLOUDFLARE_ACCOUNT_ID` — your Cloudflare account ID
+
 ### Running Tests
 
 ```bash
